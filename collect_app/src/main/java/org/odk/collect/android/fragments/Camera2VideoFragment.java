@@ -39,6 +39,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.legacy.app.FragmentCompat;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -335,6 +336,7 @@ public class Camera2VideoFragment extends Fragment
      * Tries to open a {@link CameraDevice}. The result is listened by `stateCallback`.
      */
     @SuppressWarnings("MissingPermission")
+    @RequiresApi(api = 21)
     private void openCamera(int width, int height) {
         final Activity activity = getActivity();
         if (null == activity || activity.isFinishing()) {
@@ -406,6 +408,7 @@ public class Camera2VideoFragment extends Fragment
     /**
      * Start the camera preview.
      */
+    @RequiresApi(api = 21)
     private void startPreview() {
         if (null == cameraDevice || !textureView.isAvailable() || null == previewSize) {
             return;
@@ -445,6 +448,7 @@ public class Camera2VideoFragment extends Fragment
     /**
      * Update the camera preview. {@link #startPreview()} needs to be called in advance.
      */
+    @RequiresApi(api = 21)
     private void updatePreview() {
         if (null == cameraDevice) {
             return;
@@ -523,6 +527,7 @@ public class Camera2VideoFragment extends Fragment
         mediaRecorder.prepare();
     }
 
+    @RequiresApi(api = 21)
     private void startRecordingVideo() {
         if (null == cameraDevice || !textureView.isAvailable() || null == previewSize) {
             return;

@@ -25,6 +25,8 @@ import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.view.Surface;
 
+import androidx.annotation.RequiresApi;
+
 import org.odk.collect.android.application.Collect;
 
 import java.io.File;
@@ -108,6 +110,7 @@ public class CameraUtils {
         }
     }
 
+    @RequiresApi(api = 21)
     public static boolean isFrontCameraAvailable() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {

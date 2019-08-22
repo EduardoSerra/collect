@@ -43,6 +43,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.legacy.app.FragmentCompat;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -432,6 +433,7 @@ public class Camera2Fragment extends Fragment
      * @param width  The width of available size for camera preview
      * @param height The height of available size for camera preview
      */
+    @RequiresApi(api = 21)
     private void setUpCameraOutputs(int width, int height) {
         Activity activity = getActivity();
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
@@ -539,6 +541,7 @@ public class Camera2Fragment extends Fragment
      */
 
     @SuppressLint("MissingPermission") // Permission is handled in ImageWidget,
+    @RequiresApi(api = 21)
     private void openCamera(int width, int height) {
         setUpCameraOutputs(width, height);
         configureTransform(width, height);
@@ -607,6 +610,7 @@ public class Camera2Fragment extends Fragment
     /**
      * Creates a new {@link CameraCaptureSession} for camera preview.
      */
+    @RequiresApi(api = 21)
     private void createCameraPreviewSession() {
         try {
             SurfaceTexture texture = textureView.getSurfaceTexture();
@@ -706,6 +710,7 @@ public class Camera2Fragment extends Fragment
     /**
      * Lock the focus as the first step for a still image capture.
      */
+    @RequiresApi(api = 21)
     private void lockFocus() {
         try {
             // This is how to tell the camera to lock focus.
@@ -724,6 +729,7 @@ public class Camera2Fragment extends Fragment
      * Run the precapture sequence for capturing a still image. This method should be called when
      * we get a response in {@link #captureCallback} from {@link #lockFocus()}.
      */
+    @RequiresApi(api = 21)
     private void runPrecaptureSequence() {
         try {
             // This is how to tell the camera to trigger.
@@ -742,6 +748,7 @@ public class Camera2Fragment extends Fragment
      * Capture a still picture. This method should be called when we get a response in
      * {@link #captureCallback} from both {@link #lockFocus()}.
      */
+    @RequiresApi(api = 21)
     private void captureStillPicture() {
         try {
             final Activity activity = getActivity();
@@ -803,6 +810,7 @@ public class Camera2Fragment extends Fragment
      * Unlock the focus. This method should be called when still image capture sequence is
      * finished.
      */
+    @RequiresApi(api = 21)
     private void unlockFocus() {
         try {
             // Reset the auto-focus trigger
